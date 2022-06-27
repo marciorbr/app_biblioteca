@@ -5,48 +5,45 @@
 {% block 'conteudo' %} 
 
 <div class="container">
-    <br>
-
-    {% if status == '0' %}
+  <br>
+  {% if status == '0'%}
       <div class="alert alert-success" role="alert">
-        Cadastro realizado com sucesso!
+          Cadastro realizado com sucesso
       </div>
-    {% endif %}
+  {% endif %}
 
-    {% if status == '1' %}
+  {% if status == '1'%}
+    <div class="alert alert-danger" role="alert">
+      Nome e email não podem estar vazios.
+    </div>
+  {% endif %}
+
+  {% if status == '2'%}
       <div class="alert alert-danger" role="alert">
-        Campos nome e email não podem estar vazios!
+          Sua senha deve ter pelo menos 8 caracteres
       </div>
-    {% endif %}
+  {% endif %}
 
-    {% if status == '2' %}
+  {% if status == '3'%}
       <div class="alert alert-danger" role="alert">
-        A senha deve conter no mínimo 8 caracteres!
+          Usuário já existe no sistema
       </div>
-    {% endif %}
+  {% endif %}
 
-    {% if status == '3' %}
+  {% if status == '4'%}
       <div class="alert alert-danger" role="alert">
-        Usuário já esxiste no sistema!!
+          Erro interno do sistema
       </div>
-    {% endif %}
+  {% endif %}
+  <div class="row">
 
-    {% if status == '4' %}
-      <div class="alert alert-danger" role="alert">
-        Erro interno do sistema!
+      <div class="col-md-3">
+
       </div>
-    {% endif %}
 
-    <div class="row">
-    
-        <div class="col-md-3">
-            
-        </div>
-
-        <div class="col-md-3">
-
-            <h1>Cadastre-se</h1>
-            <hr>
+      <div class="col-md">
+         <h1>Cadastre-se</h1>
+         <hr>
             
             <form method="POST" action="{% url 'valida_cadastro' %}">{% csrf_token %}
                 <div class="form-group">
@@ -65,14 +62,15 @@
                 <a href="{% url 'login' %}" class="btn btn-primary active" role="button" aria-pressed="true">Login</a>
             </form>
 
-        </div>
+          </div>
 
-        <div class="col-md-3">
-            
-        </div>
-        
-    </div>
-
-</div>
+          <div class="col-md-3">
+  
+          </div>
+  
+  
+      </div>
+  
+  </div>
 
 {% endblock 'conteudo' %}
