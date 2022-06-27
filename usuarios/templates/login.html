@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block 'titulo' %}Tela de Login{% endblock 'titulo' %}
+
+{% block 'conteudo' %} 
+
+<div class="container">
+    <br>
+
+    <div class="row">
+    
+        <div class="col-md-3">
+            
+        </div>
+
+        <div class="col-md-3">
+            <hr>
+            
+            <form method="POST" action="{% url 'validar_login' %}">{% csrf_token %}
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input name="senha" type="password" class="form-control" id="senha" placeholder="Senha...">
+                </div>
+                <button type="submit" class="btn btn-primary active">Login</button>
+                <a href="{% url 'cadastro' %}" class="btn btn-secondary" role="button" aria-pressed="true">Cadastro</a>
+            </form>
+
+        </div>
+
+        <div class="col-md-3">
+            
+        </div>
+        
+    </div>
+
+</div>
+
+{% endblock 'conteudo' %}
