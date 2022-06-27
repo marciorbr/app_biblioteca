@@ -54,3 +54,7 @@ def validar_login(request):
         return redirect('/livro/home')
         
     return HttpResponse(f"{email} {senha}")
+
+def sair(request):
+    request.session.flush()
+    return redirect('/auth/login/')
