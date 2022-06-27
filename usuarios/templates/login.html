@@ -15,6 +15,12 @@
 
         <div class="col-md-3">
             <hr>
+
+            {% if status == '1' %}
+                <div class="alert alert-danger" role="alert">
+                    Email ou Senha inválidos!
+                </div>
+            {% endif %}
             
             <form method="POST" action="{% url 'validar_login' %}">{% csrf_token %}
                 <div class="form-group">

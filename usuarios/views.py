@@ -4,7 +4,8 @@ from hashlib import sha256
 from .models import Usuario
 
 def login(request):
-    return render(request, 'login.html')
+    status = request.GET.get('status')
+    return render(request, 'login.html', { 'status': status })
 
 def cadastro(request):
     status = request.GET.get('status')
@@ -41,4 +42,15 @@ def valida_cadastro(request):
 def validar_login(request):
     email = request.POST.get('email')
     senha = request.POST.get('senha')
+    
+    senha = sha256(senha.encode()).hexdigest()
+    
+    usuario = Usuario.objects.filter(email = email).filter(senha = senha)
+    
+    if len(usuario)  == 0:
+        return redirect('/auth/login/?status=1')
+    elif len(usuario) > 0:
+        request.session['usuario'] = usuario[0].id
+        return redirect('/livro/home')
+        
     return HttpResponse(f"{email} {senha}")
