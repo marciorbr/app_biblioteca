@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-
+from usuarios.models import Usuario
 
 def home(request):
     if request.session.get('usuario'):
-        return HttpResponse('Olá')
+        usuario = Usuario.objects.get(id = request.session['usuario'])
+        return render(request,'home.html')
     else:
         return redirect('/auth/login/?status=2')
