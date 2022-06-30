@@ -3,5 +3,31 @@
 {% block 'titulo' %}Home{% endblock 'titulo' %}
 
 {% block 'conteudo' %} 
-teste
+
+<div class="container">
+    <div class="row">
+        {% for livro in  livros %}
+        <div class="col-md">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">{{livro.nome}}</h5>
+                  <h6 style="display: inline" class="card-subtitle mb-2 text-muted">Emprestado </h6>
+                    {% if livro.emprestado %}
+                        <svg style="display: inline; color: green" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                    {% else %} 
+                        <svg style="display: inline; color: red" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                    {% endif %}
+                    <br><br>
+                    <button type="button" class="btn btn-secondary btn-sm">Acessar</button>
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
 {% endblock %}
