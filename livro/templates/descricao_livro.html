@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block 'titulo' %}Decricao do livro{% endblock 'titulo' %}
+
+{% block 'conteudo' %} 
+
+{{ livro.nome }}
+{{ livro.autor }}
+{{ livro.coautor }}
+{{ livro.data_cadastro }}
+{{ livro.emprestato }}
+{{ livro.categoria }}
+{{ livro.usuario }}
+{% endblock %}
