@@ -2,13 +2,54 @@
 
 {% block 'titulo' %}Decricao do livro{% endblock 'titulo' %}
 
-{% block 'conteudo' %} 
+{% block 'conteudo' %}
 
-{{ livro.nome }}
-{{ livro.autor }}
-{{ livro.coautor }}
-{{ livro.data_cadastro }}
-{{ livro.emprestato }}
-{{ livro.categoria }}
-{{ livro.usuario }}
+<div class="container">
+    <div class="col-md">
+        <br>
+        <h1>Descrição do Livro</h1>
+        <hr>
+            <form action="#" method="POST"> {% csrf_token %}
+                <div class="form-group">
+                    
+                    <label>Nome do livro:</label>
+                    <input type="text" class="form-control" value="{{ livro.nome }}">
+                
+                    <label>Nome do autor:</label>
+                    <input type="text" class="form-control" value="{{ livro.autor }}">
+                
+                    <label>Nome do co-autor:</label>
+                    <input type="text" class="form-control" value="{{ livro.coautor }}">
+                
+                    <label>Data de cadastro:</label>
+                    <input type="text" class="form-control" value="{{ livro.data_cadastro }}">
+                
+                    <label for="exampleFormControlSelect1">Categoria:</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+
+                    {% for categoria in categoria_livro %}
+
+                        {% if livro.categoria == categoria %}
+                        <option selected>{{ categoria }}</option>
+                        {% else %}
+                        <option>{{ categoria }}</option>
+                        {% endif %}
+
+                    {% endfor %}
+
+                    </select>
+                    <br>
+                    <label>Emprestado:</label>
+                        {% if livro.emprestato %}
+                            <input checked type="checkbox" name="emprestado">
+                        {% else %}
+                            <input type="checkbox" name="emprestado">
+                        {% endif %}
+                    <br><br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+            
+    </div>
+</div>
 {% endblock %}

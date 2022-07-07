@@ -5,50 +5,46 @@
 {% block 'conteudo' %} 
 
 <div class="container">
-  <br>
-  {% if status == '0'%}
-      <div class="alert alert-success" role="alert">
-          Cadastro realizado com sucesso
-      </div>
-  {% endif %}
+    <br>
+    {% if status == '0'%}
+        <div class="alert alert-success" role="alert">
+            Cadastro realizado com sucesso
+        </div>
+    {% endif %}
 
-  {% if status == '1'%}
-    <div class="alert alert-danger" role="alert">
-      Nome e email não podem estar vazios.
+    {% if status == '1'%}
+        <div class="alert alert-danger" role="alert">
+            Nome e email não podem estar vazios.
+        </div>
+    {% endif %}
+
+    {% if status == '2'%}
+        <div class="alert alert-danger" role="alert">
+            Sua senha deve ter pelo menos 8 caracteres
+        </div>
+    {% endif %}
+
+    {% if status == '3'%}
+        <div class="alert alert-danger" role="alert">
+            Usuário já existe no sistema
+        </div>
+    {% endif %}
+
+    {% if status == '4'%}
+        <div class="alert alert-danger" role="alert">
+            Erro interno do sistema
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-3">
     </div>
-  {% endif %}
-
-  {% if status == '2'%}
-      <div class="alert alert-danger" role="alert">
-          Sua senha deve ter pelo menos 8 caracteres
-      </div>
-  {% endif %}
-
-  {% if status == '3'%}
-      <div class="alert alert-danger" role="alert">
-          Usuário já existe no sistema
-      </div>
-  {% endif %}
-
-  {% if status == '4'%}
-      <div class="alert alert-danger" role="alert">
-          Erro interno do sistema
-      </div>
-  {% endif %}
-  <div class="row">
-
-      <div class="col-md-3">
-
-      </div>
-
-      <div class="col-md">
-         <h1>Cadastre-se</h1>
-         <hr>
-            
+        <div class="col-md">
+            <h1>Cadastre-se</h1>
+            <hr>            
             <form method="POST" action="{% url 'valida_cadastro' %}">{% csrf_token %}
                 <div class="form-group">
-                  <label for="Nome">Nome</label>
-                  <input name="nome" type="Nome" class="form-control" id="Nome" placeholder="Nome...">
+                    <label for="Nome">Nome</label>
+                    <input name="nome" type="Nome" class="form-control" id="Nome" placeholder="Nome...">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -61,16 +57,10 @@
                 <button type="submit" class="btn btn-secondary">Cadastrar</button>
                 <a href="{% url 'login' %}" class="btn btn-primary active" role="button" aria-pressed="true">Login</a>
             </form>
-
-          </div>
-
-          <div class="col-md-3">
-  
-          </div>
-  
-  
-      </div>
-  
-  </div>
+        </div>
+        <div class="col-md-3">  
+        </div>
+    </div>  
+</div>
 
 {% endblock 'conteudo' %}
