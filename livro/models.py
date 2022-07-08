@@ -35,3 +35,9 @@ class Emprestimos(models.Model):
     data_emprestimo = models.DateField(blank= True, null= True)
     data_devolucao = models.DateField(blank= True, null= True)
     livro = models.ForeignKey(Livros, on_delete=models.DO_NOTHING)
+
+    def __str__(self) -> str:
+        if self.nome_emprestado_anonimo == None:
+            return f"{self.nome_emprestado} | {self.livro}"
+        else:
+            return f"{self.nome_emprestado_anonimo} | {self.livro}"
