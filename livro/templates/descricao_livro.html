@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load filtros %}   
 
 {% block 'titulo' %}Decricao do livro{% endblock 'titulo' %}
 
@@ -70,7 +71,7 @@
                     {% endif %}
                         <td>{{emprestimo.data_emprestimo}}</td>
                         <td>{{emprestimo.data_devolucao}}</td>
-                        <td>{{emprestimo}}</td>
+                        <td>{{emprestimo.data_devolucao|calculo_emprestimo:emprestimo.data_emprestimo}} Dias</td>
                   </tr>
                 {% endfor %}
                 </tbody>
