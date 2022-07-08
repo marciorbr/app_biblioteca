@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from usuarios.models import Usuario
-from livro.models import Livros, Categoria
+from livro.models import Emprestimos, Livros, Categoria
 
 def home(request):
     if request.session.get('usuario'):
@@ -16,8 +16,9 @@ def descricao_livro(request, id):
         livros = Livros.objects.get(id = id)
         if request.session.get('usuario') == livros.usuario.id:
             categoria_livro = Categoria.objects.filter(usuario = request.session.get('usuario'))
-            print(categoria_livro)
-            return render(request, 'descricao_livro.html', {'livro': livros, 'categoria_livro': categoria_livro})
+            emprestimos = Emprestimos.objects.filter(livro = livros)
+            return render(request, 'descricao_livro.html', {'livro': livros, 'categoria_livro': categoria_livro,
+                                                            'emprestimos': emprestimos })
         else:
             return HttpResponse('Este livro não é seu')
     return redirect('/auth/login/?status=2')
