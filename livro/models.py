@@ -34,5 +34,4 @@ class Emprestimos(models.Model):
     nome_emprestado_anonimo = models.CharField(max_length = 30, blank= True, null= True)
     data_emprestimo = models.DateField(blank= True, null= True)
     data_devolucao = models.DateField(blank= True, null= True)
-    tempo_duracao = models.DateField(blank= True, null= True)
     livro = models.ForeignKey(Livros, on_delete=models.DO_NOTHING)
