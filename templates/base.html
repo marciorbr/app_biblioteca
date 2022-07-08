@@ -14,6 +14,9 @@
 
   <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand mb-0 h1" href="{% url 'home' %}">Biblioteca</a>
+    <form class="form-inline">
+      <a href="{% url 'sair' %}" class="btn btn-sm btn-outline-secondary" type="button">Sair</a>
+    </form>
   </nav>
 
     {% block 'conteudo' %}{% endblock 'conteudo' %}
