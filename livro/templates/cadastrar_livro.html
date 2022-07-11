@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block 'titulo' %}Home{% endblock 'titulo' %}
+
+{% block 'conteudo' %} 
+
+<div class="container">
+    <div class="col-md">
+        <br>
+        <h1>Cadastro de Livro</h1>
+        <hr>
+            <form action="#" method="POST"> {% csrf_token %}
+                <div class="form-group">
+                {{ formCadastroLivro|bootstrap }}
+                </div>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </form>
+    </div>
+</div>
+
+{% endblock 'conteudo' %}
