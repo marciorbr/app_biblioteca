@@ -35,8 +35,11 @@ def cadastrar_livro(request):
             form.save()
             usuario_logado = request.session.get('usuario')
             form = CadastroLivro()
-            return render(request, 'cadastrar_livro.html', {'usuario_logado': usuario_logado,
-                                                            'formCadastroLivro': form})
+            usuario = Usuario.objects.get(id = request.session['usuario'])
+            livros = Livros.objects.filter( usuario = usuario )
+            return render(request,'home.html', {'livros': livros, 
+                                                'usuario_logado': usuario_logado,
+                                                'formCadastroLivro': form})
         else:
             return HttpResponse('Dados inválidos!')
 
