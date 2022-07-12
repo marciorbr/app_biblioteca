@@ -16,10 +16,6 @@ class Livros(models.Model):
     co_autor = models.CharField(max_length= 30, blank=True, null=True)
     data_cadastro = models.DateField(default=date.today)
     emprestado = models.BooleanField(default=False)
-    nome_emprestado = models.CharField(max_length= 30, blank=True, null=True)
-    data_emprestimo = models.DateTimeField(blank=True, null=True)
-    data_devolucao = models.DateTimeField(blank=True, null=True)
-    tempo_duracao = models.DateField(blank=True, null=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING)
     usuario = models.ForeignKey(Usuario, on_delete=models.DO_NOTHING)
 
