@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from usuarios.models import Usuario
 from livro.models import Emprestimos, Livros, Categoria
+from .forms import CadatroLivro
 
 def home(request):
     if request.session.get('usuario'):
@@ -24,3 +25,21 @@ def descricao_livro(request, id):
         else:
             return HttpResponse('Este livro não é seu')
     return redirect('/auth/login/?status=2')
+
+def cadastrar_livro(request):
+    if request.method == 'POST':
+        form = CadatroLivro(request.POST)
+        if form.is_valid():
+            form.save()
+            usuario_logado = request.session.get('usuario')
+            form = CadatroLivro()
+            return render(request, 'cadastrar_livro.html', {'usuario_logado': usuario_logado, 'formCadastroLivro': form})
+        else:
+            return HttpResponse('Dados inválidos!')
+
+    if request.session.get('usuario'):
+        usuario_logado = request.session.get('usuario')
+        form = CadatroLivro()
+        return render(request, 'cadastrar_livro.html', {'usuario_logado': usuario_logado, 'formCadastroLivro': form})
+    else:
+        return redirect('/auth/login/?status=2')
