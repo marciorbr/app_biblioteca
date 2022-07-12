@@ -6,4 +6,8 @@ class CadatroLivro(forms.ModelForm):
 
     class Meta:
         model = Livros
-        fields = ['nome', 'autor', 'co_autor', 'data_cadastro', 'emprestado','categoria']
+        fields = "__all__"
+
+    def __init__(self, *args, **kargs):
+        super().__init__(*args, **kargs)
+        self.fields['usuario'].widget = forms.HiddenInput()
