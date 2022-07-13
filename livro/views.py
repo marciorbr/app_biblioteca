@@ -23,7 +23,8 @@ def descricao_livro(request, id):
             return render(request, 'descricao_livro.html', {'livro': livros, 
                                                             'categoria_livro': categoria_livro,
                                                             'emprestimos': emprestimos, 
-                                                            'usuario_logado': usuario_logado })
+                                                            'usuario_logado': usuario_logado,
+                                                            'id_livro': id, })
         else:
             return HttpResponse('Este livro não é seu')
     return redirect('/auth/login/?status=2')
@@ -52,3 +53,7 @@ def cadastrar_livro(request):
                                                         'formCadastroLivro': form})
     else:
         return redirect('/auth/login/?status=2')
+
+def excluir_livro(request, id):
+    livro = Livros.objects.get(id = id).delete()
+    return redirect('/livro/home')
