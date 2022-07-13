@@ -21,7 +21,7 @@
       {% if usuario_logado %}
       <form class="form-inline">
         <!-- Button trigger Cadastrar livro -->
-        <a href="{% url 'cadastrar_livro' %}" class="btn btn-sm btn-outline-success mr-sm-2" type="button">Categoria</a>
+        <a href="{% url 'cadastrar_categoria' %}" class="btn btn-sm btn-outline-success mr-sm-2" type="button">Categoria</a>
         <!-- Button trigger Cadastrar livro -->
         <a href="{% url 'cadastrar_livro' %}" class="btn btn-sm btn-outline-success mr-sm-2" type="button">livro</a>
         <!-- Button trigger sair -->
@@ -33,8 +33,8 @@
     {% block 'conteudo' %}{% endblock 'conteudo' %}
 
     <!-- Bootstrap JS and Bundle-->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"</script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"</script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
   </body>
 </html>

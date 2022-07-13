@@ -1,21 +1,22 @@
 {% extends 'base.html' %}
 {% load bootstrap %}
 
-{% block 'titulo' %}Cadastro de Livro{% endblock 'titulo' %}
+{% block 'titulo' %}Cadastro de Categoria{% endblock 'titulo' %}
 
 {% block 'conteudo' %} 
 
 <div class="container">
     <div class="col-md">
         <br>
-        <h1>Cadastro de Livro</h1>
+        <h1>Cadastro de Categoria</h1>
         <hr>
-            <form action="#" method="POST"> {% csrf_token %}
+            <form action="{% url 'home' %}" method="POST"> {% csrf_token %}
                 <div class="form-group">
-                {{ formCadastroLivro|bootstrap }}
+                {{ formCadastroCategoria|bootstrap }}
                 </div>
                 <button type="submit" class="btn btn-outline-success mr-sm-2">Cadastrar</button>
             </form>
+            <br>
     </div>
 </div>
 
