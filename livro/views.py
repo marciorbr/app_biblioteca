@@ -7,9 +7,12 @@ from .forms import CadastroLivro, CadastroCategoria
 def home(request):
     if request.session.get('usuario'):
         usuario = Usuario.objects.get(id = request.session['usuario'])
+        status_categoria = request.GET.get('cadastro_categoria')
         livros = Livros.objects.filter( usuario = usuario )
         usuario_logado = request.session.get('usuario')
-        return render(request,'home.html', {'livros': livros, 'usuario_logado': usuario_logado})
+        return render(request,'home.html', {'livros': livros, 
+                                            'usuario_logado': usuario_logado,
+                                            'status_categoria': status_categoria,})
     else:
         return redirect('/auth/login/?status=2')
     
@@ -63,13 +66,11 @@ def cadastrar_categoria(request):
         form = CadastroCategoria(request.POST)
         if form.is_valid():
             form.save()
-            usuario_logado = request.session.get('usuario')
-            form = CadastroCategoria()
-            usuario = Usuario.objects.get(id = request.session['usuario'])
-            livros = Livros.objects.filter( usuario = usuario )
-            return render(request,'home.html', {'livros': livros, 
-                                                'usuario_logado': usuario_logado,
-                                                'formCadastroCategoria': form})
+            #usuario_logado = request.session.get('usuario')
+            #form = CadastroCategoria()
+            #usuario = Usuario.objects.get(id = request.session['usuario'])
+            #livros = Livros.objects.filter( usuario = usuario )
+            return redirect('/livro/home?cadastro_categoria=1')
         else:
             return HttpResponse('Dados inválidos!')
 
