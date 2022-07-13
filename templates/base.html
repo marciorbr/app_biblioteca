@@ -20,8 +20,10 @@
       <a class="navbar-brand mb-0 h1" href="{% url 'home' %}">Biblioteca</a>
       {% if usuario_logado %}
       <form class="form-inline">
-        <!-- Button trigger modal Cadastrar livro-->
-        <a href="{% url 'cadastrar_livro' %}" class="btn btn-sm btn-outline-success mr-sm-2" type="button">Cadastrar livro</a>
+        <!-- Button trigger Cadastrar livro -->
+        <a href="{% url 'cadastrar_livro' %}" class="btn btn-sm btn-outline-success mr-sm-2" type="button">Categoria</a>
+        <!-- Button trigger Cadastrar livro -->
+        <a href="{% url 'cadastrar_livro' %}" class="btn btn-sm btn-outline-success mr-sm-2" type="button">livro</a>
         <!-- Button trigger sair -->
         <a href="{% url 'sair' %}" class="btn btn-sm btn-outline-secondary" type="button">Sair</a>
       </form>
