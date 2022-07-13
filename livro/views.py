@@ -72,7 +72,7 @@ def cadastrar_categoria(request):
             #livros = Livros.objects.filter( usuario = usuario )
             return redirect('/livro/home?cadastro_categoria=1')
         else:
-            return HttpResponse('Dados inválidos!')
+            return redirect('/livro/home?cadastro_categoria=2')
 
     elif request.session.get('usuario'):
         usuario_logado = request.session.get('usuario')
