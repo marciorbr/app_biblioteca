@@ -8,12 +8,14 @@ def home(request):
     if request.session.get('usuario'):
         usuario = Usuario.objects.get(id = request.session['usuario'])
         status_categoria = request.GET.get('cadastro_categoria')
+        status_emprestimo = request.GET.get('cadastro_emprestimo')
         livros = Livros.objects.filter( usuario = usuario )
         formCadastroEmprestimo = CadastroEmprestimo()
         usuario_logado = request.session.get('usuario')
         return render(request,'home.html', {'livros': livros, 
                                             'usuario_logado': usuario_logado,
                                             'status_categoria': status_categoria,
+                                            'status_emprestimo': status_emprestimo,
                                             'formCadastroEmprestimo': formCadastroEmprestimo,})
     else:
         return redirect('/auth/login/?status=2')
@@ -90,3 +92,12 @@ def cadastrar_categoria(request):
                                                         'formCadastroEmprestimo': formCadastroEmprestimo,})
     else:
         return redirect('/auth/login/?status=2')
+
+def cadastrar_emprestimo(request):
+    if request.method == 'POST':
+        formCadastroEmprestimo = CadastroEmprestimo(request.POST)
+        if formCadastroEmprestimo.is_valid():
+            formCadastroEmprestimo.save()
+            return redirect('/livro/home?cadastro_emprestimo=1')
+        else:
+            return redirect('/livro/home?cadastro_emprestimo=2')

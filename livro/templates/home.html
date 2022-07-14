@@ -7,9 +7,13 @@
 <div class="container">
 
     <br>
-    {% if status_categoria == '1' %}
+    {% if status_categoria == '1' or status_emprestimo == '1' %}
       <div class="alert alert-success" role="alert">
-        Categoria cadastrada com sucesso!
+        Cadastro realizado com sucesso!
+      </div>
+    {% elif status_categoria == '2' or status_emprestimo == '2' %}
+    <div class="alert alert-danger" role="alert">
+        Erro ao realizar cadastro!
       </div>
     {% endif %}
 
