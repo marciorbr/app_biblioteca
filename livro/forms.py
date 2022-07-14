@@ -25,5 +25,5 @@ class CadastroCategoria(forms.ModelForm):
 class CadastroEmprestimo(forms.ModelForm):
 
     class Meta:
-        model = Categoria
+        model = Emprestimos
         fields = "__all__"
