@@ -1,6 +1,6 @@
 from django import forms
 from django.db.models import fields
-from .models import Livros, Categoria
+from .models import Livros, Categoria, Emprestimos
 
 class CadastroLivro(forms.ModelForm):
     
@@ -21,3 +21,9 @@ class CadastroCategoria(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['usuario'].widget = forms.HiddenInput()
+
+class CadastroEmprestimo(forms.ModelForm):
+
+    class Meta:
+        model = Categoria
+        fields = "__all__"
