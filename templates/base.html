@@ -1,3 +1,4 @@
+{% load bootstrap %}
 <!doctype html>
 <html lang="pt-BR">
   <head>
@@ -20,6 +21,8 @@
       <a class="navbar-brand mb-0 h1" href="{% url 'home' %}">Biblioteca</a>
       {% if usuario_logado %}
       <form class="form-inline">
+        <!-- Button trigger Emprestar livro -->
+        <button type="button" class="btn btn-sm btn-outline-success mr-sm-2" data-toggle="modal" data-target="#emprestimoModal" data-whatever="@mdo">Emprestimos</button>
         <!-- Button trigger Cadastrar livro -->
         <a href="{% url 'cadastrar_categoria' %}" class="btn btn-sm btn-outline-success mr-sm-2" type="button">Categoria</a>
         <!-- Button trigger Cadastrar livro -->
@@ -31,6 +34,33 @@
     </nav>
 
     {% block 'conteudo' %}{% endblock 'conteudo' %}
+
+    <!-- Modal Emprestimo -->
+    {% if usuario_logado %}
+    <div class="modal fade" id="emprestimoModal" tabindex="-1" aria-labelledby="emprestimoModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cadastrar Emprestimo de Livro</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                {{ formCadastroEmprestimo|bootstrap }}
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Sair</button>
+            <button type="button" class="btn btn-outline-primary">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
 
     <!-- Bootstrap JS and Bundle-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
